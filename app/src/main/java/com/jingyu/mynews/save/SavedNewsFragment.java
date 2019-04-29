@@ -12,18 +12,23 @@ import android.widget.TextView;
 import com.jingyu.mynews.R;
 import com.jingyu.mynews.common.MyBasicFragment;
 import com.jingyu.mynews.common.MyFragmentManager;
+import com.jingyu.mynews.mvp.MvpFragment;
 import com.jingyu.mynews.save.detail.SavedNewsDetailedFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SavedNewsFragment extends MyBasicFragment {
+public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> implements SavedNewsContract.View {
 
     public static SavedNewsFragment newInstance() {
         SavedNewsFragment fragment = new SavedNewsFragment();
         return fragment;
     }
 
+    @Override
+    public SavedNewsContract.Presenter getPresenter() {
+        return new SavedNewsPresenter();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
