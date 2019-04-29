@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jingyu.mynews.R;
+import com.jingyu.mynews.news.MyGalleryFragment;
 import com.jingyu.mynews.save.SavedNewsFragment;
 
 public class ContainerFragment extends MyBasicFragment {
@@ -68,7 +69,7 @@ public class ContainerFragment extends MyBasicFragment {
     private static Fragment createInitFragmentByIndex(int pageIndex) {
         switch (pageIndex) {
             case HOME_PAGE:
-                return null;
+                return MyGalleryFragment.newInstance();
             case SAVE_PAGE:
                 return SavedNewsFragment.newInstance();
             case PROFILE_PAGE:
