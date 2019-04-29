@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 public interface MyFragmentManager {
 
-//    void doFragmentTransaction(TinBasicFragment basicFragment);
+    void doFragmentTransaction(MyBasicFragment basicFragment);
 
     void startActivityWithBundle(Class<?> clazz, boolean isFinished, Bundle bundle);
 

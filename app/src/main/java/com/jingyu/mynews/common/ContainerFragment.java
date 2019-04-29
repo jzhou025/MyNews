@@ -1,12 +1,13 @@
 package com.jingyu.mynews.common;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.jingyu.mynews.R;
+import com.jingyu.mynews.save.SavedNewsFragment;
 
 public class ContainerFragment extends MyBasicFragment {
     public static final int HOME_PAGE = 0;
@@ -16,19 +17,39 @@ public class ContainerFragment extends MyBasicFragment {
     public static final int PROFILE_PAGE = 2;
     public static final String PROFILE_PAGE_TAG = "profile_page";
     private int pageIndex;
+    private Fragment initFragment;
 
     public static ContainerFragment newInstance(int pageIndex) {
         ContainerFragment containerFragment = new ContainerFragment();
         containerFragment.pageIndex = pageIndex;
+        containerFragment.initFragment = createInitFragmentByIndex(pageIndex);
         return containerFragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-        TextView textView = view.findViewById(R.id.text);
-        textView.setText("This is containFragment" + pageIndex);
-        return view;
+        return inflater.inflate(R.layout.child_fragment_container, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (initFragment != null && !initFragment.isAdded()) {
+            getChildFragmentManager().beginTransaction().replace(R.id.child_fragment_container, initFragment, getCurrentTag(pageIndex))
+                    .commit();
+        }
+    }
+    public static String getCurrentTag(int position) {
+        switch (position) {
+            case HOME_PAGE:
+                return HOME_PAGE_TAG;
+            case SAVE_PAGE:
+                return SAVE_PAGE_TAG;
+            case PROFILE_PAGE:
+                return PROFILE_PAGE_TAG;
+            default:
+                return null;
+        }
     }
 
     public static int getPositionById(int id) {
@@ -43,4 +64,18 @@ public class ContainerFragment extends MyBasicFragment {
                 throw new IndexOutOfBoundsException();
         }
     }
+
+    private static Fragment createInitFragmentByIndex(int pageIndex) {
+        switch (pageIndex) {
+            case HOME_PAGE:
+                return null;
+            case SAVE_PAGE:
+                return SavedNewsFragment.newInstance();
+            case PROFILE_PAGE:
+                return null;
+            default:
+                throw new IndexOutOfBoundsException();
+        }
+    }
+
 }

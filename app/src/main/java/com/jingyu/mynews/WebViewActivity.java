@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.jingyu.mynews.common.MyBasicActivity;
+import com.jingyu.mynews.common.MyBasicFragment;
 
 public class WebViewActivity extends MyBasicActivity implements PopupMenu.OnMenuItemClickListener {
     public static final String URL = "url";
@@ -116,5 +117,9 @@ public class WebViewActivity extends MyBasicActivity implements PopupMenu.OnMenu
 
     }
 
+    @Override
+    public void doFragmentTransaction(MyBasicFragment basicFragment) {
+
+    }
 }
 
