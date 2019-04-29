@@ -15,10 +15,12 @@ import android.widget.TextView;
 import com.jingyu.mynews.R;
 import com.jingyu.mynews.common.MyBasicFragment;
 import com.jingyu.mynews.common.MyFragmentManager;
+import com.jingyu.mynews.common.ViewModelAdapter;
 import com.jingyu.mynews.mvp.MvpFragment;
 import com.jingyu.mynews.retrofit.response.News;
 import com.jingyu.mynews.save.detail.SavedNewsDetailedFragment;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -26,7 +28,7 @@ import java.util.List;
  */
 public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> implements SavedNewsContract.View {
 
-    private SavedNewsAdapter savedNewsAdapter;
+    private ViewModelAdapter savedNewsAdapter;
     private TextView emptyState;
 
     public static SavedNewsFragment newInstance() {
@@ -48,7 +50,7 @@ public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         emptyState = view.findViewById(R.id.empty_state);
-        savedNewsAdapter = new SavedNewsAdapter(myFragmentManager);
+        savedNewsAdapter = new ViewModelAdapter();
         recyclerView.setAdapter(savedNewsAdapter);
         return view;
     }
@@ -65,7 +67,12 @@ public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> 
         } else {
             emptyState.setVisibility(View.GONE);
         }
-        if (newsList != null)
-            savedNewsAdapter.setNewsList(newsList);
+        if (newsList != null) {
+            List<SavedNewsViewModel> models = new LinkedList<>();
+            for (News news : newsList) {
+                models.add(new SavedNewsViewModel(news, myFragmentManager));
+            }
+            savedNewsAdapter.addViewModels(models);
+        }
     }
 }
