@@ -16,12 +16,16 @@ public class MyNoSwipeViewPager extends ViewPager {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        return super.onInterceptTouchEvent(event);
+        //return super.onInterceptTouchEvent(event);
+        //disable --> swipe to switch between pages
+        return false;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return super.onTouchEvent(event);
+        //return super.onTouchEvent(event);
+        //disable --> swipe to switch between pages
+        return false;
     }
 }
 
