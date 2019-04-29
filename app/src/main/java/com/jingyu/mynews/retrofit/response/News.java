@@ -22,8 +22,17 @@ public class News implements Parcelable {
     @SerializedName("publishedAt")
     public String time;
 
-    public News(Parcel in) {
+    public News() {
 
+    }
+
+    protected News(Parcel in) {
+        author = in.readString();
+        title = in.readString();
+        description = in.readString();
+        url = in.readString();
+        image = in.readString();
+        time = in.readString();
     }
 
     public static final Parcelable.Creator<News> CREATOR = new Parcelable.Creator<News>() {

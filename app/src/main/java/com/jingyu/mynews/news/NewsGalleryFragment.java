@@ -77,7 +77,7 @@ public class NewsGalleryFragment extends MvpFragment<NewsContract.Presenter> imp
 
     @Override
     public void onLike(News news) {
-
+        presenter.saveFavoriteNews(news);
     }
 
     @Override

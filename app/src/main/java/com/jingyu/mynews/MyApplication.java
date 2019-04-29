@@ -16,10 +16,11 @@ public class MyApplication extends Application {
         Stetho.initializeWithDefaults(this);
         database = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "tin_db").build();
-
     }
+
     public static AppDatabase getDataBase() {
         return database;
     }
 
 }
+

@@ -1,5 +1,6 @@
 package com.jingyu.mynews.news;
 
+import com.jingyu.mynews.database.AppDatabase;
 import com.jingyu.mynews.retrofit.response.News;
 
 import java.util.List;
@@ -36,6 +37,11 @@ public class NewsPresenter implements NewsContract.Presenter{
         if (this.view != null) {
             view.showNewsCard(newsList);
         }
+    }
+
+    @Override
+    public void saveFavoriteNews(News news) {
+        this.model.saveFavoriteNews(news);
     }
 
 }
