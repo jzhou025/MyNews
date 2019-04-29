@@ -20,7 +20,7 @@
         android:layout_height="24dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        app:srcCompat="@drawable/ic_navigate_next_black_24dp"/>
+        app:srcCompat="@drawable/ic_spa_black_24dp"/>
 
 
 </RelativeLayout>

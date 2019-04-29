@@ -5,6 +5,8 @@ import android.annotation.SuppressLint;
 import com.jingyu.mynews.MyApplication;
 import com.jingyu.mynews.database.AppDatabase;
 
+import org.greenrobot.eventbus.EventBus;
+
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -31,7 +33,7 @@ public class ProfileModel implements ProfileContract.Model {
 
     @Override
     public void setDefaultCountry(String country) {
-
+        EventBus.getDefault().post(new CountryEvent(country));
     }
 }
 

@@ -70,6 +70,9 @@ public class NewsGalleryFragment extends MvpFragment<NewsContract.Presenter> imp
 
     @Override
     public void showNewsCard(List<News> newsList) {
+        // clear all previous news card
+        mSwipeView.removeAllViews();
+
         for (News news : newsList) {
             MyNewsCard tinNewsCard = new MyNewsCard(news, mSwipeView, this);
             mSwipeView.addView(tinNewsCard);
