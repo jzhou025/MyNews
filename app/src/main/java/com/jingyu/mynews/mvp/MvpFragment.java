@@ -25,7 +25,7 @@ public abstract class MvpFragment<P extends  MvpContract.Presenter> extends MyBa
             presenter.onViewAttached(this);
         }
     }
-    
+
     @Override
     public void onStop() {
         super.onStop();

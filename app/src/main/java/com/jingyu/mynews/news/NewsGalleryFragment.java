@@ -23,15 +23,15 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyGalleryFragment extends MyBasicFragment implements MyNewsCard.OnSwipeListener{
+public class NewsGalleryFragment extends MyBasicFragment implements MyNewsCard.OnSwipeListener{
 
     private SwipePlaceHolderView mSwipeView;
 
-    public static MyGalleryFragment newInstance() {
+    public static NewsGalleryFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        MyGalleryFragment fragment = new MyGalleryFragment();
+        NewsGalleryFragment fragment = new NewsGalleryFragment();
         fragment.setArguments(args);
         return fragment;
     }
