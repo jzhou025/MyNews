@@ -68,6 +68,10 @@ public class SavedNewsDetailedFragment extends MyBasicFragment {
             viewModels.add(new DescriptionViewModel(news.description));
         }
 
+        if (!Util.isStringEmpty(news.url)) {
+            viewModels.add(new ReadmoreViewModel(news.url, myFragmentManager));
+        }
+
         viewModelAdapter.addViewModels(viewModels);
     }
 
