@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.jingyu.mynews.R;
 import com.jingyu.mynews.news.NewsGalleryFragment;
+import com.jingyu.mynews.profile.MyProfileFragment;
 import com.jingyu.mynews.save.SavedNewsFragment;
 
 public class ContainerFragment extends MyBasicFragment {
@@ -73,7 +74,7 @@ public class ContainerFragment extends MyBasicFragment {
             case SAVE_PAGE:
                 return SavedNewsFragment.newInstance();
             case PROFILE_PAGE:
-                return null;
+                return MyProfileFragment.newInstance();
             default:
                 throw new IndexOutOfBoundsException();
         }
