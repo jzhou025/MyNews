@@ -19,5 +19,9 @@ public interface NewsDao {
     @Query("SELECT * FROM news")
     Flowable<List<News>> getAll();
 
+    // clear cache, delete all saved news
+    @Query("DELETE FROM news")
+    void deleteAllNews();
+
 }
 

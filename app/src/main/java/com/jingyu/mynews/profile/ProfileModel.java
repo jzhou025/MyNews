@@ -1,7 +1,13 @@
 package com.jingyu.mynews.profile;
 
+import android.annotation.SuppressLint;
+
 import com.jingyu.mynews.MyApplication;
 import com.jingyu.mynews.database.AppDatabase;
+
+import io.reactivex.Completable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class ProfileModel implements ProfileContract.Model {
 
@@ -13,9 +19,14 @@ public class ProfileModel implements ProfileContract.Model {
         this.presenter = presenter;
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void deleteAllNewsCache() {
+        Completable.fromAction(() -> db.newsDao().deleteAllNews()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(() -> {
+            presenter.onCacheCleared();
+        }, error -> {
 
+        });
     }
 
     @Override
