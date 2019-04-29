@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.jingyu.mynews.R;
 import com.jingyu.mynews.common.MyBasicFragment;
+import com.jingyu.mynews.mvp.MvpFragment;
 import com.jingyu.mynews.retrofit.NewsRequestApi;
 import com.jingyu.mynews.retrofit.RetrofitClient;
 import com.jingyu.mynews.retrofit.response.News;
@@ -23,22 +24,19 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsGalleryFragment extends MyBasicFragment implements MyNewsCard.OnSwipeListener{
+public class NewsGalleryFragment extends MvpFragment<NewsContract.Presenter> implements MyNewsCard.OnSwipeListener, NewsContract.View {
 
     private SwipePlaceHolderView mSwipeView;
 
     public static NewsGalleryFragment newInstance() {
-
         Bundle args = new Bundle();
-
         NewsGalleryFragment fragment = new NewsGalleryFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_gallery, container, false);
 
@@ -91,5 +89,10 @@ public class NewsGalleryFragment extends MyBasicFragment implements MyNewsCard.O
     @Override
     public void onLike(News news) {
 
+    }
+
+    @Override
+    public NewsContract.Presenter getPresenter() {
+        return new NewsPresenter();
     }
 }
