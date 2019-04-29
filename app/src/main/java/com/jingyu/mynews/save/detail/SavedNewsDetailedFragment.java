@@ -51,6 +51,11 @@ public class SavedNewsDetailedFragment extends MyBasicFragment {
 
     private void loadNews(News news){
         List<BaseViewModel> viewModels = new LinkedList<>();
+
+        if (!Util.isStringEmpty(news.title)) {
+            viewModels.add(new TitleViewModel(news.title));
+        }
+
         if (!Util.isStringEmpty(news.author) || !Util.isStringEmpty(news.time)) {
             viewModels.add(new AuthorViewModel(news.author, news.time));
         }
