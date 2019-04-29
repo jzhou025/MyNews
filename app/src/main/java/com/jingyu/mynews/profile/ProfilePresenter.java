@@ -25,6 +25,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     @Override
     public void onViewAttached(ProfileContract.View view) {
         this.view = view;
+        this.view.setView();
     }
 
     @Override

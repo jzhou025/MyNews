@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.jingyu.mynews.R;
 import com.jingyu.mynews.common.ViewModelAdapter;
 import com.jingyu.mynews.mvp.MvpFragment;
+import com.jingyu.mynews.save.detail.TitleViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,6 +44,7 @@ public class MyProfileFragment extends MvpFragment<ProfileContract.Presenter> im
 
     @Override
     public void setView() {
+        viewModelAdapter.addViewModel(new TitleViewModel(getString(R.string.setting), R.layout.setting_title_layout));
     }
 
     @Override
