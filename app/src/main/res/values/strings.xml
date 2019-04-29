@@ -2,4 +2,8 @@
     <string name="app_name">MyNews</string>
     <string name="share_link">Share The Link</string>
     <string name="copy_the_link">Copy The Link</string>
+
+    <string name="news">News</string>
+    <string name="save">Save</string>
+    <string name="profile">Profile</string>
 </resources>

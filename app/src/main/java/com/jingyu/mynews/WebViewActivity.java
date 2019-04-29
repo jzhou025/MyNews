@@ -95,9 +95,9 @@ public class WebViewActivity extends MyBasicActivity implements PopupMenu.OnMenu
             case R.id.menu_share:
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                String shareBody = "From TinNews: \n" + url;
+                String shareBody = "From MyNews: \n" + url;
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                this.startActivity(Intent.createChooser(sharingIntent, "Share TinNews"));
+                this.startActivity(Intent.createChooser(sharingIntent, "Share MyNews"));
                 break;
             case R.id.menu_copy:
                 ClipboardManager clipboard = (ClipboardManager)
