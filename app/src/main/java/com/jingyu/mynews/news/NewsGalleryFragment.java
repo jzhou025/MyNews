@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jingyu.mynews.R;
 import com.jingyu.mynews.common.MyBasicFragment;
@@ -73,6 +74,10 @@ public class NewsGalleryFragment extends MvpFragment<NewsContract.Presenter> imp
             MyNewsCard tinNewsCard = new MyNewsCard(news, mSwipeView, this);
             mSwipeView.addView(tinNewsCard);
         }
+    }
+    @Override
+    public void onError() {
+        Toast.makeText(getContext(), "News has been inserted before", Toast.LENGTH_SHORT).show();
     }
 
     @Override

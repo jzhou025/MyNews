@@ -47,6 +47,7 @@ public class NewsModel implements NewsContract.Model {
                 subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(() ->{
 
         }, error -> {
+            presenter.onError();
         });
     }
 

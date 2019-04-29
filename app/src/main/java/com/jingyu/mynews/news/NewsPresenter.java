@@ -44,4 +44,9 @@ public class NewsPresenter implements NewsContract.Presenter{
         this.model.saveFavoriteNews(news);
     }
 
+    @Override
+    public void onError() {
+        view.onError();
+    }
+
 }
