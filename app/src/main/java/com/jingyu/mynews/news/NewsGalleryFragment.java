@@ -64,22 +64,11 @@ public class NewsGalleryFragment extends MvpFragment<NewsContract.Presenter> imp
             }
         });
 
-        getDate();
-
         return view;
     }
 
-    private void getDate() {
-        RetrofitClient.getInstance().create(NewsRequestApi.class).getNewsByCountry("us")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .filter(baseResponse -> baseResponse != null && baseResponse.articles != null)
-                .subscribe(baseResponse -> {
-                    showNewsCard(baseResponse.articles);
-                });
-    }
-
-    private void showNewsCard(List<News> newsList) {
+    @Override
+    public void showNewsCard(List<News> newsList) {
         for (News news : newsList) {
             MyNewsCard tinNewsCard = new MyNewsCard(news, mSwipeView, this);
             mSwipeView.addView(tinNewsCard);
