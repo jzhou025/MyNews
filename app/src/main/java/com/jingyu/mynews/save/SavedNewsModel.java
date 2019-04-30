@@ -12,7 +12,7 @@ public class SavedNewsModel implements SavedNewsContract.Model {
 
     private SavedNewsContract.Presenter presenter;
     private final AppDatabase db;
-    
+
     SavedNewsModel() {
         db = MyApplication.getDataBase();
     }

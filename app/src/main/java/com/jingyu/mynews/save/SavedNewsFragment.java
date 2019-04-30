@@ -6,19 +6,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jingyu.mynews.R;
-import com.jingyu.mynews.common.MyBasicFragment;
-import com.jingyu.mynews.common.MyFragmentManager;
 import com.jingyu.mynews.common.ViewModelAdapter;
 import com.jingyu.mynews.mvp.MvpFragment;
 import com.jingyu.mynews.retrofit.response.News;
-import com.jingyu.mynews.save.detail.SavedNewsDetailedFragment;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -45,7 +41,6 @@ public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //7.8
         View view = inflater.inflate(R.layout.fragment_saved_news, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

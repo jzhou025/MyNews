@@ -35,6 +35,10 @@ public class MyNewsCard {
 
     private final OnSwipeListener onSwipeListener;
 
+    interface OnSwipeListener {
+        void onLike(News news);
+    }
+
     public MyNewsCard(News news, SwipePlaceHolderView swipeView, OnSwipeListener onSwipeListener) {
         this.news = news;
         this.swipeView = swipeView;
@@ -67,7 +71,6 @@ public class MyNewsCard {
     private void onSwipeIn(){
         Log.d("EVENT", "onSwipedIn");
         onSwipeListener.onLike(news);
-
     }
 
     @SwipeInState
@@ -80,11 +83,6 @@ public class MyNewsCard {
         Log.d("EVENT", "onSwipeOutState");
     }
 
-
-    interface OnSwipeListener {
-        void onLike(News news);
-
-    }
 }
 
 

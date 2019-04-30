@@ -11,11 +11,22 @@ import java.util.List;
 public class ViewModelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final List<BaseViewModel> viewModels;
-    private final SparseArrayCompat<BaseViewModel> viewTypeMap;
+    private final SparseArrayCompat<BaseViewModel> viewTypeMap;  //SparseArray maps Integers to Objects
 
     public ViewModelAdapter() {
         viewModels = new ArrayList<>();
         viewTypeMap = new SparseArrayCompat<>();
+    }
+
+    // create new views
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return viewTypeMap.get(viewType).createViewHolder(parent);
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        viewModels.get(position).bindViewHolder(holder);
     }
 
     public void addViewModels(Collection<? extends BaseViewModel> viewModels) {
@@ -47,16 +58,6 @@ public class ViewModelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private int getPosition(BaseViewModel viewModel) {
         int position = viewModels.indexOf(viewModel);
         return  position;
-    }
-
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return viewTypeMap.get(viewType).createViewHolder(parent);
-    }
-
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        viewModels.get(position).bindViewHolder(holder);
     }
 
     @Override

@@ -28,13 +28,14 @@ public class NewsModel implements NewsContract.Model {
         this.presenter = presenter;
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void fetchData(String country) {
-        newsRequestApi.getNewsByCountry(country)
+        newsRequestApi.getNewsByCountry(country)     // get -> Observable<BaseResponse>
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .filter(baseResponse -> baseResponse != null && baseResponse.articles != null)
-                .subscribe(baseResponse -> {
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(baseResponse -> {          // emission occurs after called subscribe()
                     presenter.showNewsCard(baseResponse.articles);
                 });
 
@@ -43,8 +44,10 @@ public class NewsModel implements NewsContract.Model {
     @SuppressLint("CheckResult")
     @Override
     public void saveFavoriteNews(News news) {
-        Completable.fromAction(() -> db.newsDao().insertNews(news)).
-                subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(() ->{
+        Completable.fromAction(() -> db.newsDao().insertNews(news))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(() ->{
 
         }, error -> {
             presenter.onError();

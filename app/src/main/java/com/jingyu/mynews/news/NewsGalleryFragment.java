@@ -9,18 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.jingyu.mynews.R;
-import com.jingyu.mynews.common.MyBasicFragment;
 import com.jingyu.mynews.mvp.MvpFragment;
-import com.jingyu.mynews.retrofit.NewsRequestApi;
-import com.jingyu.mynews.retrofit.RetrofitClient;
 import com.jingyu.mynews.retrofit.response.News;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
 import java.util.List;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * A simple {@link Fragment} subclass.

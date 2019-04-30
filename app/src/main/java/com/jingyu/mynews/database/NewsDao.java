@@ -10,6 +10,11 @@ import java.util.List;
 
 import io.reactivex.Flowable;
 
+/*
+    Dao -> Data Access Object
+    is an object that provides an abstract interface to database.
+ */
+
 @Dao
 public interface NewsDao {
 
